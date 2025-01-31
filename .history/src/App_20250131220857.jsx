@@ -8,7 +8,6 @@ import About from "./Components/About.jsx";
 import Services from "./Components/Services.jsx";
 import Contact from "./Components/Contact.jsx";
 import Create from "./Components/Create.jsx";
-import Edit from "./Components/Edit.jsx";
 
 
 const App = () => {
@@ -17,9 +16,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/Home" element={<Home />} />
-        <Route path="/create" element={<Create />} />
+        <Route path="/create" element={<Login />} />
         <Route path="/details/:id" element={<Details />} />
-        <Route path="/edit/:id" element={<Edit />} />
         <Route path="/About" element={<About />} />
         <Route path="/Services" element={<Services />} />
         <Route path="/Contact" element={<Contact />} />

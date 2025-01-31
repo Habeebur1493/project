@@ -29,9 +29,10 @@ const Home = () => {
     if (category != "undefined"){
 
     // getproductscategory();
-    setfilteredProducts(products.filter((p) => p.category == category));
+    setfilteredProducts(products.filter(p => p.category == category));
   }
   }, [category, products]);
+
   
 
   if (!products) {

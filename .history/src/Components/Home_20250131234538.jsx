@@ -32,6 +32,7 @@ const Home = () => {
     setfilteredProducts(products.filter((p) => p.category == category));
   }
   }, [category, products]);
+
   
 
   if (!products) {

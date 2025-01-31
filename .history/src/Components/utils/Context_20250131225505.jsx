@@ -1,11 +1,10 @@
 import React, { createContext, useEffect, useState } from "react";
-// import axios from "axios";
+import axios from "axios";
 
 export const ProductContext = createContext();
 
 const Context = ({children}) => {
-  const [products, setproducts] = useState(
-    JSON.parse(localStorage.getItem("products")) || []);
+  const [products, setproducts] = useState([]);
   
   // const getproducts = async () => {
   //   try {
@@ -16,9 +15,9 @@ const Context = ({children}) => {
   //   }
   // };
 
-  // useEffect(() => {
-  //   getproducts();
-  // }, []);
+  useEffect(() => {
+    getproducts();
+  }, []);
 
   return (
     <ProductContext.Provider value={{products, setproducts}}>

@@ -26,12 +26,9 @@ const Home = () => {
 
     if (!filteredProducts || category == "undefined") 
       setfilteredProducts(products);
-    if (category != "undefined"){
-
-    // getproductscategory();
-    setfilteredProducts(products.filter((p) => p.category == category));
-  }
+    if (category != "undefined") getproductscategory();
   }, [category, products]);
+
   
 
   if (!products) {

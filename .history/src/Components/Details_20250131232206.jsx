@@ -1,17 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
-// import axios from "axios";
+import { Link, useParams } from "react-router-dom";
+import axios from "axios";
 import Loading from "./Loading";
 import { ProductContext } from "./utils/Context";
-import { toast } from "react-toastify";
 
 
 const Details = () => {
-  const navigate = useNavigate();
   const [products, setproducts] = useContext(ProductContext);
   const [product, setproduct] = useState(null)
   const { id } = useParams();
-
   // const getsingleproduct = async () => {
   //   try {
   //     const { data } = await axios.get(`https://fakestoreapi.com/products/${id}`);
@@ -22,20 +19,9 @@ const Details = () => {
   //   }
   // };
 
-  useEffect(() => {
-    if(!product){
-      setproduct(products.filter((p) => p.id == id)[0]);
-    }
-    // getsingleproduct();
-  }, []);
-
-  const ProductDeleteHandler = (id) => {
-    const FilteredProducts = products.filter((p) => p.id != id);
-    setproducts(FilteredProducts);
-    localStorage.setItem("products", JSON.stringify(FilteredProducts));
-    toast.success("Product Deleted Successfully");
-    navigate("/");
-  };
+  // useEffect(() => {
+  //   getsingleproduct();
+  // }, []);
 
   return product ? ( 
     <div className="w-[70%] flex h-full justify-between items-center m-auto py-[10%] ">
@@ -54,16 +40,12 @@ const Details = () => {
         <p className="text-zinc-800 text-2xl mb-10">
           {product.description}
         </p>
-        <Link 
-        to={`/edit/${product.id}`}
-        className="mr-5 py-4 px-10 border rounded text-white text-xl bg-blue-600">
+        <Link className="mr-5 py-4 px-10 border rounded text-white text-xl bg-blue-600">
           Edit
         </Link>
-        <button 
-        onClick={() => ProductDeleteHandler(product.id)}
-        className="py-4 px-10 border rounded text-white text-xl bg-red-600">
+        <Link className="py-4 px-10 border rounded text-white text-xl bg-red-600">
           Delete
-        </button>
+        </Link>
       </div>
     </div> 
     ) : ( 
